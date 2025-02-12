@@ -1,3 +1,4 @@
+import React from "react";
 const characters = ["broccoli", "carrot", "chicken", "sun"];
 
 const TargetBox = ({x, y}) => {

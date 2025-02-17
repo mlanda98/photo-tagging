@@ -2,10 +2,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import TargetBox from "./TargetBox.jsx";
 
 const characters = [
-  { name: "Broccoli", x: 545, y: 467, width: 200, height: 840 },
-  { name: "Carrot", x: 500, y: 1046, width: 200, height: 840 },
-  { name: "Chicken", x: 507, y: 786, width: 200, height: 840 },
-  { name: "Sun", x: 615, y: 161, width: 200, height: 840 },
+  { name: "broccoli", x: 545, y: 467, width: 200, height: 840 },
+  { name: "carrot", x: 500, y: 1046, width: 200, height: 840 },
+  { name: "chicken", x: 507, y: 786, width: 200, height: 840 },
+  { name: "sun", x: 615, y: 161, width: 200, height: 840 },
 ];
 
 const GameBoard = () => {
@@ -72,8 +72,10 @@ const handleGameComplete = useCallback(() => {
   const checkCharacterMatch = (x, y, selectedChar) => {
     console.log("Current foundCharacters before update:", foundCharacters);
     if (!x || !y || !selectedChar) return;
-
+    console.log("Selected Character:", selectedChar);
     const char = characters.find((c) => c.name === selectedChar);
+    console.log("Character Details:", char);
+    console.log("Click coordinates:", x, y);
     if (
       char &&
       x >= char.x &&
@@ -82,10 +84,16 @@ const handleGameComplete = useCallback(() => {
       y <= char.y + char.height &&
       !foundCharacters.includes(char.name)
     ) {
+      console.log("Character matched");
       setFoundCharacters((prev) => {
+        if (!prev.includes(char.name)){
         const updatedCharacters = [...prev, char.name];
         console.log("updated foundCharacters:", updatedCharacters);
         return updatedCharacters;
+        } else {
+          console.log("Character already found:", char.name);
+          return prev;
+        }
       });
     } else {
       alert("Incorrect guess. Try again!");

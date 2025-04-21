@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import "./App.css";
 import GameBoard from "./components/GameBoard";
 

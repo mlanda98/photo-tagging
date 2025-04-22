@@ -4,7 +4,7 @@ const path = require("path");
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(Path2D.join(__dirname, "frontend", "build")));
+app.use(express.static(path.join(__dirname, "frontend", "build")));
 
 const characters = [
   { name: "Broccoli", x: 545, y: 467, width: 143, height: 840 },

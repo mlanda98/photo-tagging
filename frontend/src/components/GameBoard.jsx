@@ -174,4 +174,4 @@ const handleGameComplete = useCallback(() => {
   );
 };
 
-export default GameBoard;
+export default GameB

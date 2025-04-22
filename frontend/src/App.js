@@ -7,10 +7,10 @@ function App() {
     <div className="App">
       <h1>Find these Characters!</h1>
       <div className="characters">
-        <img src="/broccoli.png" className="character"></img>
-        <img src="/carrot.png" className="character"></img>
-        <img src="/chicken.png" className="character"></img>
-        <img src="/sun.png" className="character"></img>
+        <img src="/broccoli.png" className="character" alt="broccoli"></img>
+        <img src="/carrot.png" className="character" alt="carrot"></img>
+        <img src="/chicken.png" className="character" alt="chicken"></img>
+        <img src="/sun.png" className="character" alt="sun"></img>
       </div>
       <GameBoard />
     </div>

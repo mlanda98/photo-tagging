@@ -31,14 +31,14 @@ const GameBoard = () => {
         setElapsedTime(((Date.now() - startTime) / 1000).toFixed(2));
         timerRef.current = requestAnimationFrame(updateTimer);
       }
-    }
+    };
 
     timerRef.current = requestAnimationFrame(updateTimer);
 
     return () => cancelAnimationFrame(timerRef.current);
   }, [startTime]);
 
-const handleGameComplete = useCallback(() => {
+  const handleGameComplete = useCallback(() => {
     const timeTaken = ((Date.now() - startTime) / 1000).toFixed(2);
 
     const playerName = prompt(
@@ -47,18 +47,21 @@ const handleGameComplete = useCallback(() => {
 
     if (playerName) {
       setTopScorers((prevScorers) => {
-      const updatedScores = [...prevScorers, { name: playerName, time: parseFloat(timeTaken) }]
-        .sort((a, b) => a.time - b.time)
-        .slice(0, 5);
+        const updatedScores = [
+          ...prevScorers,
+          { name: playerName, time: parseFloat(timeTaken) },
+        ]
+          .sort((a, b) => a.time - b.time)
+          .slice(0, 5);
 
-      localStorage.setItem("topScorers", JSON.stringify(updatedScores));
-      return updatedScores;
-    })
-  }
-  setTarget(null);
-  setFoundCharacters([]);
-  setStartTime(null);
-}, [startTime]);
+        localStorage.setItem("topScorers", JSON.stringify(updatedScores));
+        return updatedScores;
+      });
+    }
+    setTarget(null);
+    setFoundCharacters([]);
+    setStartTime(null);
+  }, [startTime]);
 
   useEffect(() => {
     console.log("foundCharacters updated:", foundCharacters);
@@ -68,7 +71,6 @@ const handleGameComplete = useCallback(() => {
     }
   }, [foundCharacters, handleGameComplete]);
 
-  
   const checkCharacterMatch = (x, y, selectedChar) => {
     console.log("Current foundCharacters before update:", foundCharacters);
     if (!x || !y || !selectedChar) return;
@@ -86,10 +88,10 @@ const handleGameComplete = useCallback(() => {
     ) {
       console.log("Character matched");
       setFoundCharacters((prev) => {
-        if (!prev.includes(char.name)){
-        const updatedCharacters = [...prev, char.name];
-        console.log("updated foundCharacters:", updatedCharacters);
-        return updatedCharacters;
+        if (!prev.includes(char.name)) {
+          const updatedCharacters = [...prev, char.name];
+          console.log("updated foundCharacters:", updatedCharacters);
+          return updatedCharacters;
         } else {
           console.log("Character already found:", char.name);
           return prev;
@@ -157,8 +159,13 @@ const handleGameComplete = useCallback(() => {
           handleClick(e);
         }}
       />
-      {target && <TargetBox x={target.x} y={target.y} 
-      handleSelectCharacter={checkCharacterMatch} />}
+      {target && (
+        <TargetBox
+          x={target.x}
+          y={target.y}
+          handleSelectCharacter={checkCharacterMatch}
+        />
+      )}
 
       <div className="top-scorers">
         <h3>Top Scorers:</h3>
@@ -174,4 +181,4 @@ const handleGameComplete = useCallback(() => {
   );
 };
 
-export default GameB
+export default GameBoard;

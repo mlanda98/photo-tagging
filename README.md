@@ -4,12 +4,6 @@ A "Where's Waldo" inspired photo-tagging app built with full-stack functionality
 
 ---
 
-🚀 Demo
-
- ![App Demo](dem.gif)
-
----
-
 📌 Features
 - Clickable photo with targeting box
 - Dropdown menu to select which character is being tagged
@@ -32,18 +26,21 @@ A "Where's Waldo" inspired photo-tagging app built with full-stack functionality
 💻 Run It Locally
 - Clone the repository
   `git clone https://github.com/mlanda98/photo-tagging.git`
-  Backend
-- Navigate into the project directory
-  `cd backend`
-- Install dependencies
-  `npm install`
-- Start the server
-  `npm run dev`
+- Backend:
+  ```
+  cd backend
+  npm install
+  npm run dev
 
-  Frontend
-- cd frontend
-- npm install
-- npm start
+  ```
+
+- Frontend:
+  ```
+  cd frontend
+  npm install
+  npm start
+                    
+  ```
 - Open your browser to `http://localhost:3000`
 
 ---
